@@ -132,7 +132,10 @@ async def get_body(request: Request) -> str:
 
     request._stream_consumed = False
 
-    return body.decode("utf-8")
+    try:
+        return body.decode("utf-8")
+    except:
+        return ""
 
 
 async def query_params_to_dict(query_params: str) -> dict:
